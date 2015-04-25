@@ -58,9 +58,9 @@ index 09f5c01..3185936 100644
          self.add_sysv('bar', {'Provides': 'bar'}, enable=True)
          err, results = self.run_generator()
          self.assertEqual(sorted(results), ['bar.service', 'foo.service'])
-+        # we do expect an overwrite here, bar.service should overwrite the
++        # we do not expect an overwrite here, bar.service should not overwrite the
 +        # alias link from foo.service
-+        self.assertIn('Overwriting', err)
++        self.assertNotIn('Overwriting', err)
  
      def test_nonexecutable_script(self):
          '''ignores non-executable init.d script'''
